@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Vahram Martirosyan — CV</title>
+<style>
+  :root {
+    --navy: #003366;
+    --navy-light: #1a4d8a;
+    --accent: #0077cc;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #555;
+    --border: #dde3ec;
+    --tag-bg: #e8f0fb;
+    --tag-text: #1a4d8a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pub-link {
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .15s, color .15s;
+  }
+  .pub-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0077cc, #00ccaa);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 700; color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .sidebar-header h1 { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .sidebar-header p { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 4px; line-height: 1.4; }
+
+  .sidebar-contact {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .sidebar-contact a {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 12px; margin-bottom: 8px;
+    transition: color .2s;
+  }
+  .sidebar-contact a:hover { color: #fff; }
+  .sidebar-contact .icon { font-size: 14px; width: 18px; text-align: center; }
+
+  .reveal-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed rgba(255,255,255,0.3);
+    border-radius: 6px;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px; padding: 5px 10px;
+    cursor: pointer; width: 100%; text-align: left;
+    margin-bottom: 8px; transition: all .2s;
+  }
+  .reveal-btn:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .reveal-btn .lock { font-size: 13px; }
+  .revealed {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 4px;
+  }
+  .revealed.show { display: flex; }
+  .reveal-note { font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+
+  .sidebar-nav {
+    padding: 16px 10px;
+    flex: 1;
+  }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: 8px;
+    color: rgba(255,255,255,0.7); cursor: pointer;
+    font-size: 13px; transition: all .2s;
+    margin-bottom: 2px;
+    border: none; background: none; width: 100%; text-align: left;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .nav-item.active { background: rgba(255,255,255,0.15); color: #fff; font-weight: 600; }
+  .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+
+  .sidebar-langs {
+    padding: 14px 20px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .sidebar-langs h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+  .lang-badge {
+    display: inline-block; background: rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 11px; color: rgba(255,255,255,0.8); margin: 2px 2px 2px 0;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    padding: 32px 36px;
+    max-width: 900px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { display: none; animation: fadeIn .25s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeIn { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform:none; } }
+
+  /* ── SECTION HEADER ── */
+  .section-title {
+    font-size: 22px; font-weight: 700; color: var(--navy);
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 8px; margin-bottom: 24px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text p { margin-bottom: 12px; color: var(--text); line-height: 1.8; }
+
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip {
+    background: var(--tag-bg); color: var(--tag-text);
+    padding: 5px 14px; border-radius: 20px; font-size: 12px;
+    font-weight: 600; border: 1px solid #c8d9f5;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 14px; margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--card); border-radius: 10px;
+    border: 1px solid var(--border); padding: 16px;
+    text-align: center;
+  }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--navy); }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── SKILLS ── */
+  .skill-group { margin-bottom: 22px; }
+  .skill-group h3 {
+    font-size: 13px; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .5px;
+    margin-bottom: 10px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    background: var(--tag-bg); color: var(--tag-text);
+    padding: 4px 12px; border-radius: 16px; font-size: 12px;
+    border: 1px solid #c8d9f5;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-group { margin-bottom: 28px; }
+  .exp-group-title {
+    font-size: 13px; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .5px;
+    margin-bottom: 12px; padding-bottom: 5px;
+    border-bottom: 2px solid var(--navy);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .exp-group-title .group-icon { font-size: 16px; }
+
+  .role-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--navy);
+    transition: box-shadow .2s;
+    cursor: pointer;
+  }
+  .role-card:hover { box-shadow: 0 2px 12px rgba(0,51,102,0.12); }
+
+  .role-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .role-title { font-weight: 700; font-size: 14px; color: var(--navy); }
+  .role-date {
+    font-size: 11px; color: var(--muted);
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 12px; white-space: nowrap; margin-left: 10px;
+  }
+  .role-org { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 2px; }
+  .role-body { margin-top: 8px; display: none; }
+  .role-card.open .role-body { display: block; }
+  .role-body ul { padding-left: 18px; }
+  .role-body li { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+
+  .toggle-hint { font-size: 11px; color: #aaa; margin-top: 4px; }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px; margin-bottom: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  .edu-degree { font-weight: 700; font-size: 15px; color: var(--navy); }
+  .edu-uni { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .edu-years {
+    display: inline-block; font-size: 11px; color: var(--muted);
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 12px; margin-top: 6px;
+  }
+  .edu-thesis {
+    margin-top: 10px; padding: 10px 14px;
+    background: var(--tag-bg); border-radius: 8px;
+    font-size: 12px; color: var(--tag-text); font-style: italic;
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-group { margin-bottom: 26px; }
+  .pub-group-title {
+    font-size: 13px; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .5px;
+    margin-bottom: 12px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin-bottom: 8px;
+  }
+  .pub-title { font-weight: 600; font-size: 13px; color: var(--text); line-height: 1.5; }
+  .pub-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .pub-note {
+    margin-top: 6px; font-size: 11px;
+    background: #f0faf5; color: #1a6640;
+    padding: 4px 10px; border-radius: 6px; border-left: 3px solid #2ecc71;
+    display: inline-block;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-group { margin-bottom: 22px; }
+  .cert-group-title {
+    font-size: 13px; font-weight: 700; color: var(--navy);
+    text-transform: uppercase; letter-spacing: .5px;
+    margin-bottom: 10px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cert-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cert-name { font-size: 12px; font-weight: 500; color: var(--text); }
+  .cert-issuer-date { font-size: 10px; color: var(--muted); text-align: right; white-space: nowrap; margin-left: 8px; }
+  .nvidia-badge { color: #76b900; font-weight: 700; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+    .main { margin-left: 0; padding: 20px 16px; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .cert-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="avatar">VM</div>
+    <h1>Dr. Vahram Martirosyan</h1>
+    <p>Ph.D. · Explainable Medical AI · HPC &amp; Compiler Engineering · Systems Programmer · Academic Leader</p>
+  </div>
+
+  <div class="sidebar-contact">
+    <button class="reveal-btn" onclick="revealContact()" id="revealBtn"><span class="lock">🔒</span> Click to show contact info</button>
+    <span class="reveal-note" id="revealNote">Tap once to reveal phone &amp; email</span>
+    <div class="revealed" id="revealedContact">
+      <a href="tel:+971503562363"><span class="icon">📱</span>+971 50 356 2363</a>
+      <a href="mailto:vmartirosyan@gmail.com"><span class="icon">✉️</span>vmartirosyan@gmail.com</a>
+    </div>
+    <a href="https://www.linkedin.com/in/vahrammartirosyan" target="_blank"><span class="icon">🔗</span>LinkedIn Profile</a>
+    <a href="https://www.researchgate.net/profile/Vahram-Martirosyan-2" target="_blank"><span class="icon">📄</span>ResearchGate</a>
+    <a href="https://github.com/vmartirosyan" target="_blank"><span class="icon">💻</span>GitHub</a>
+    <a href="#"><span class="icon">📍</span>Abu Dhabi, UAE · Golden Visa</a>
+  </div>
+
+  <nav class="sidebar-nav">
+    <button class="nav-item active" onclick="show('summary', this)"><span class="nav-icon">👤</span> Summary</button>
+    <button class="nav-item" onclick="show('skills', this)"><span class="nav-icon">⚙️</span> Technical Skills</button>
+    <button class="nav-item" onclick="show('experience', this)"><span class="nav-icon">💼</span> Experience</button>
+    <button class="nav-item" onclick="show('education', this)"><span class="nav-icon">🎓</span> Education</button>
+    <button class="nav-item" onclick="show('publications', this)"><span class="nav-icon">📚</span> Publications</button>
+    <button class="nav-item" onclick="show('certifications', this)"><span class="nav-icon">🏅</span> Certifications</button>
+  </nav>
+
+  <div class="sidebar-langs">
+    <h4>Languages</h4>
+    <span class="lang-badge">🇦🇲 Armenian</span>
+    <span class="lang-badge">🇷🇺 Russian</span>
+    <span class="lang-badge">🇬🇧 English</span>
+  </div>
+</aside>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main class="main">
+
+  <!-- ── SUMMARY ── -->
+  <div id="summary" class="section active">
+    <div class="section-title">Professional Summary</div>
+
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-num">16</div><div class="stat-label">Publications</div></div>
+      <div class="stat-card"><div class="stat-num">2009×</div><div class="stat-label">Peak GPU Speedup</div></div>
+      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">Certifications</div></div>
+    </div>
+
+    <div class="summary-text">
+      <p>Ph.D. in Computational Mathematics with 20+ years of experience across research, industry, and
+      academia. Core expertise spans <strong>explainable medical AI</strong>, <strong>high-performance computing</strong>,
+      <strong>compiler engineering</strong>, and <strong>systems programming</strong>, with a consistent focus on making
+      complex computational problems both efficient and interpretable.</p>
+
+      <p>Active researcher in transparent machine learning for clinical diagnostics and LLVM-based
+      automatic parallelisation. Former industry engineer and technical lead, startup CEO, and head of a
+      Russian Academy of Sciences laboratory. Currently <strong>Assistant Professor and Course Team Leader</strong>
+      at Higher Colleges of Technology, Abu Dhabi.</p>
+    </div>
+
+    <div class="skill-chips">
+      <span class="chip">Explainable Medical AI</span>
+      <span class="chip">HPC++</span>
+      <span class="chip">LLVM / Clang</span>
+      <span class="chip">Polynomial Regression Networks</span>
+      <span class="chip">Linux Kernel</span>
+      <span class="chip">MPI / OpenCL</span>
+      <span class="chip">C/C++ Expert</span>
+      <span class="chip">Academic Leadership</span>
+      <span class="chip">ISP RAS</span>
+      <span class="chip">Xilinx ACAP</span>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ── -->
+  <div id="skills" class="section">
+    <div class="section-title">Technical Skills</div>
+
+    <div class="skill-group">
+      <h3>🧠 Explainable / Medical AI</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Polynomial Regression Models (PRMs)</span>
+        <span class="skill-tag">Feature Importance</span>
+        <span class="skill-tag">Interpretable Classification</span>
+        <span class="skill-tag">Regression-based Diagnostics</span>
+        <span class="skill-tag">Statistics &amp; Probability</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>📊 Machine Learning</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Supervised Learning</span>
+        <span class="skill-tag">Regression Modelling</span>
+        <span class="skill-tag">Interpretable Model Design</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">PyTorch</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>⚡ HPC &amp; Parallelism</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">LLVM / Clang</span>
+        <span class="skill-tag">OpenCL</span>
+        <span class="skill-tag">MPI</span>
+        <span class="skill-tag">POSIX Threads</span>
+        <span class="skill-tag">Auto-vectorisation</span>
+        <span class="skill-tag">CPU-GPU Execution</span>
+        <span class="skill-tag">Xilinx ACAP</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>🛠 Systems Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">C / C++ (Expert)</span>
+        <span class="skill-tag">Linux Kernel Modules</span>
+        <span class="skill-tag">Device Drivers (Ext4, XFS, JFS, BtrFS)</span>
+        <span class="skill-tag">Win32 API</span>
+        <span class="skill-tag">GTK+</span>
+        <span class="skill-tag">IoT / Embedded</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>🌐 Web &amp; Databases</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP / MySQL</span>
+        <span class="skill-tag">ASP.NET / C#</span>
+        <span class="skill-tag">MS SQL Server</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>🔧 Tooling</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Linux / Unix</span>
+        <span class="skill-tag">LaTeX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EXPERIENCE ── -->
+  <div id="experience" class="section">
+    <div class="section-title">Professional Experience</div>
+    <p style="font-size:11px;color:#aaa;margin-bottom:18px;">Click a role to expand details.</p>
+
+    <div class="exp-group">
+      <div class="exp-group-title"><span class="group-icon">🔬</span>Research &amp; HPC Engineering</div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Chief Executive Officer</div><div class="role-org">System View Armenia, Yerevan</div></div>
+          <span class="role-date">Jun 2022 – Jul 2023</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Developed an LLVM/Clang-based auto-vectoriser for Xilinx ACAP boards as part of the <em>Visual System Integrator</em> toolchain.</li>
+        </ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Head of System Programming Laboratory</div><div class="role-org">Russian-Armenian (Slavonic) University / ISP RAS, Yerevan</div></div>
+          <span class="role-date">Jan 2009 – Jul 2013</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Led the System Programming Lab of the Institute for System Programming of the Russian Academy of Sciences.</li>
+          <li>Implemented Linux Foundation verification projects for system libraries (LibStdCXX, XLib, GTK+) and kernel modules (Ext4, XFS, JFS, BtrFS) using the Spruce dynamic-verification system.</li>
+        </ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Junior Research Scientist</div><div class="role-org">Institute of Mathematics, National Academy of Sciences of RA, Yerevan</div></div>
+          <span class="role-date">2003 – 2005</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Parallelisation of numerical algorithms for integral equations and interpolation using MPI.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="exp-group">
+      <div class="exp-group-title"><span class="group-icon">🏢</span>Industry Engineering &amp; Leadership</div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Director of Software Engineering</div><div class="role-org">Plat.AI, Yerevan</div></div>
+          <span class="role-date">Sep 2023 – Dec 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Led the software engineering team at Plat.AI's Armenian branch.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Associate Software Development Manager</div><div class="role-org">HelpSystems Armenia, Yerevan</div></div>
+          <span class="role-date">Oct 2021 – Jun 2022</span>
+        </div>
+        <div class="role-body"><ul><li>Led engineering teams on enterprise-level software products following promotion from Principal Engineer.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Principal Software Engineer / Team Lead</div><div class="role-org">HelpSystems Armenia, Yerevan</div></div>
+          <span class="role-date">Feb 2017 – Oct 2021</span>
+        </div>
+        <div class="role-body"><ul><li>Led a team delivering enterprise software; technical ownership across design, implementation, and code review.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Software Architect</div><div class="role-org">Priotix, Yerevan</div></div>
+          <span class="role-date">2018 – 2020</span>
+        </div>
+        <div class="role-body"><ul><li>Designed and built a complete smart-home IoT system from the ground up.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Principal / Senior Software Developer</div><div class="role-org">Optym, Yerevan</div></div>
+          <span class="role-date">Aug 2015 – Feb 2017</span>
+        </div>
+        <div class="role-body"><ul><li>Developed optimisation algorithms for logistics scheduling solutions.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Senior Software Developer</div><div class="role-org">ArdInnoTekh LLC, Yerevan</div></div>
+          <span class="role-date">Aug 2013 – Jul 2015</span>
+        </div>
+        <div class="role-body"><ul><li>Back-end development for an enterprise-level logistics scheduling and optimisation framework.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Software Developer</div><div class="role-org">ISMoTech, Yerevan</div></div>
+          <span class="role-date">Oct 2006 – Dec 2008</span>
+        </div>
+        <div class="role-body"><ul><li>Firmware development for telematic devices; Windows applications in C++/C#; ASP.NET Web Services in C#.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Software Developer</div><div class="role-org">Lycos Europe</div></div>
+          <span class="role-date">Mar 2005 – Oct 2006</span>
+        </div>
+        <div class="role-body"><ul><li>Web development using PHP/MySQL technologies.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Software Developer</div><div class="role-org">South Tech Consulting Inc., Yerevan</div></div>
+          <span class="role-date">Sep 2004 – Apr 2005</span>
+        </div>
+        <div class="role-body"><ul><li>Web application development using ASP.NET/C#/MS SQL Server.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Software Developer</div><div class="role-org">NATK LLC, Yerevan</div></div>
+          <span class="role-date">Apr 2004 – Oct 2004</span>
+        </div>
+        <div class="role-body"><ul><li>Developed internet shop applications in PHP/MySQL and ASP.NET/C#/MS SQL Server.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="exp-group">
+      <div class="exp-group-title"><span class="group-icon">🎓</span>Teaching &amp; Academia</div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Course Team Leader</div><div class="role-org">Higher Colleges of Technology, Abu Dhabi, UAE</div></div>
+          <span class="role-date">Jan 2025 – Present</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Managing and guiding a team of lecturers across multiple campuses for System Architecture &amp; Integration.</li>
+          <li>Preparing and maintaining course materials and assessment strategies; ensuring standardised delivery across campuses.</li>
+        </ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Assistant Professor, Computer Information Science</div><div class="role-org">Higher Colleges of Technology, Abu Dhabi, UAE</div></div>
+          <span class="role-date">Jan 2024 – Present</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Fundamentals of Programming (Java), System Architecture, IoT &amp; Security, Data Structures &amp; Algorithms, Statistics and Probability.</li>
+        </ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Senior Lecturer</div><div class="role-org">Yerevan State University, Faculty of Informatics &amp; Applied Mathematics</div></div>
+          <span class="role-date">Feb 2021 – Dec 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Taught Operating Systems; supervised research in system programming and applied mathematics.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Visiting Lecturer</div><div class="role-org">American University of Armenia, Yerevan</div></div>
+          <span class="role-date">Aug 2022 – Jan 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Taught Introduction to Computer Science course.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Faculty Lecturer</div><div class="role-org">Université française en Arménie (UFAR), Yerevan</div></div>
+          <span class="role-date">Jan 2023 – Dec 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Courses: Computer Architecture I, C Programming.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Founder &amp; Lecturer</div><div class="role-org">MutEx School, Yerevan</div></div>
+          <span class="role-date">Jan 2019 – Jun 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Founded and ran a programming school; delivered courses and public lectures.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Lecturer</div><div class="role-org">Armsoft, Yerevan</div></div>
+          <span class="role-date">Sep 2013 – Dec 2019</span>
+        </div>
+        <div class="role-body"><ul><li>Taught Operating Systems at Armsoft's Computer Science Learning Center.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Lecturer</div><div class="role-org">Armenian Code Academy, Yerevan</div></div>
+          <span class="role-date">Feb 2015 – Jun 2015</span>
+        </div>
+        <div class="role-body"><ul><li>Taught .NET / C# programming course.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Informatics Teacher</div><div class="role-org">PhysMath School After A. Shahinyan, Yerevan</div></div>
+          <span class="role-date">Sep 2023 – Dec 2023</span>
+        </div>
+        <div class="role-body"><ul><li>Taught Informatics at a specialist physics-mathematics secondary school.</li></ul></div>
+      </div>
+
+      <div class="role-card" onclick="toggleRole(this)">
+        <div class="role-card-header">
+          <div><div class="role-title">Senior Lecturer</div><div class="role-org">Russian-Armenian (Slavonic) University, Yerevan</div></div>
+          <span class="role-date">Feb 2007 – 2014</span>
+        </div>
+        <div class="role-body"><ul>
+          <li>Courses: Linux/POSIX Programming, Win32 API, Linux Device Driver Development, GUI (GTK+), Operating Systems, System Programming, DBMS.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EDUCATION ── -->
+  <div id="education" class="section">
+    <div class="section-title">Education</div>
+
+    <div class="edu-card">
+      <div class="edu-degree">Ph.D., Computational Mathematics</div>
+      <div class="edu-uni">Yerevan State University</div>
+      <div class="edu-years">2006 – 2009</div>
+      <div class="edu-thesis">
+        📄 <em>Dissertation:</em> "Construction of an Algorithm for the Pseudoinversion of Bidiagonal Matrices and an Investigation of its Parallelization"
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-degree">M.Sc., Informatics and Applied Mathematics</div>
+      <div class="edu-uni">Yerevan State University</div>
+      <div class="edu-years">2004 – 2006</div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-degree">B.Sc., Informatics and Applied Mathematics</div>
+      <div class="edu-uni">Yerevan State University</div>
+      <div class="edu-years">2000 – 2004</div>
+    </div>
+  </div>
+
+  <!-- ── PUBLICATIONS ── -->
+  <div id="publications" class="section">
+    <div class="section-title">Publications</div>
+
+    <div class="pub-group">
+      <div class="pub-group-title">📝 Preprints &amp; Research Papers</div>
+
+      <div class="pub-card">
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/400895541_Stagewise_Regularized_Polynomial_Regression_A_Hybrid_Optimization_Strategy_for_Medical_Diagnosis_on_Small_Datasets" target="_blank" class="pub-link">Stagewise Regularized Polynomial Regression: A Hybrid Optimization Strategy for Medical Diagnosis on Small Datasets</a></div>
+        <div class="pub-meta">Martirosyan, V. · Feb 2026</div>
+        <div class="pub-note">86.7% accuracy · 93% model compression · ≈36 FLOPs/prediction</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/400525850_Polynomial_Regression_Models_for_Interpretable_Machine_Learning_Theory_Optimization_and_Medical_Applications" target="_blank" class="pub-link">Polynomial Regression Models for Interpretable Machine Learning: Theory, Optimization, and Medical Applications</a></div>
+        <div class="pub-meta">Martirosyan, V. · Feb 2026</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/400546745_Heart_Disease_Diagnosis_Using_Third-Order_Polynomial_Regression_Models_with_L2_Regularization" target="_blank" class="pub-link">Heart Disease Diagnosis Using Third-Order Polynomial Regression Models with L2 Regularization</a></div>
+        <div class="pub-meta">Martirosyan, V. · Feb 2026</div>
+        <div class="pub-note">81.8% accuracy · 10-fold CV · Full interpretability via explicit polynomial coefficients</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/399777763_Explainable_and_Efficient_Digit_Classification_via_Polynomial_Regression_Networks_A_Transparent_Alternative_to_Deep_Learning" target="_blank" class="pub-link">Explainable and Efficient Digit Classification via Polynomial Regression Networks: A Transparent Alternative to Deep Learning</a></div>
+        <div class="pub-meta">Martirosyan, V. · Jan 2026</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title"><a href="https://www.researchgate.net/publication/400580721_HPC_An_LLVM-Based_Automatic_Parallelization_Framework_with_Heterogeneous_CPU-GPU_Execution" target="_blank" class="pub-link">HPC++: An LLVM-Based Automatic Parallelization Framework with Heterogeneous CPU-GPU Execution</a></div>
+        <div class="pub-meta">Martirosyan, V. · Feb 2026</div>
+        <div class="pub-note">Peak speedup 2009× on GPU · 32.1× on CPU</div>
+      </div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-group-title">🏛 Conference Papers</div>
+
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/287544971_Testing_of_Linux_File_System_Drivers" target="_blank" class="pub-link">Testing of Linux File System Drivers</a></div><div class="pub-meta">Martirosyan, V. et al. · Proceedings of ISP RAS, vol. 23, Moscow · Dec 2012</div></div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/301370666_The_Spruce_System_Quality_Verification_of_Linux_File_Systems_Drivers" target="_blank" class="pub-link">The Spruce System: Quality Verification of Linux File System Drivers</a></div><div class="pub-meta">Martirosyan, V. et al. · SYRCoSE 2012 · May 2012</div></div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/384332453_Dynamic_Verification_of_Linux_File_System_Drivers" target="_blank" class="pub-link">Dynamic Verification of Linux File System Drivers</a></div><div class="pub-meta">Martirosyan, V. et al. · CSIT 2011 · Sep 2011</div></div>
+      <div class="pub-card"><div class="pub-title">The Spruce System: Linux Kernel Module Verification Automation (in Russian)</div><div class="pub-meta">Martirosyan, V. et al. · 7th Annual Conference of RAU · Dec 2012</div></div>
+      <div class="pub-card"><div class="pub-title">Fault Simulation in Linux Kernel Module Verification (in Russian)</div><div class="pub-meta">Martirosyan, V. et al. · 7th Annual Conference of RAU · Dec 2012</div></div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/384332617_LINUX_VERIFICATION_-_CHALLENGE_OF_TODAY" target="_blank" class="pub-link">Linux Verification — Challenge of Today</a></div><div class="pub-meta">Martirosyan, V. et al. · 7th Annual Conference of RAU · Dec 2012</div></div>
+      <div class="pub-card"><div class="pub-title">X2C — XML To Code: Advantages of Standards</div><div class="pub-meta">Martirosyan, V. et al. · 4th Scientific Annual Conference of RAU · Dec 2009</div></div>
+      <div class="pub-card"><div class="pub-title">X2C: Code Generation Technology</div><div class="pub-meta">Martirosyan, V. et al.</div></div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-group-title">📖 Books &amp; Tutorials</div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/384331222_Programming_via_Operating_Systems_Second_Edition" target="_blank" class="pub-link">Programming via Operating Systems, Second Edition</a></div><div class="pub-meta">Martirosyan, V. · Hilfmann Press · Sep 2024</div></div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/384332530_Basics_of_programming_in_OS_Linux_environment" target="_blank" class="pub-link">Tutorial: Basics of Programming in OS Linux Environment (in Russian)</a></div><div class="pub-meta">Martirosyan, V. et al. · MIPT · Apr 2011</div></div>
+      <div class="pub-card"><div class="pub-title"><a href="https://www.researchgate.net/publication/370445350_Programming_via_Operating_Systems" target="_blank" class="pub-link">Tutorial: Programming in GNU/Linux Environment — From System Calls to the GUI (in Russian)</a></div><div class="pub-meta">Martirosyan, V. et al. · RAU Publishing · Dec 2010</div></div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-group-title">🌐 Translations</div>
+      <div class="pub-card"><div class="pub-title">Jinnetic Engineering by Richard Stallman — translated into Armenian</div><div class="pub-meta">Dec 2010</div></div>
+    </div>
+  </div>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <div id="certifications" class="section">
+    <div class="section-title">Certifications</div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">🧠 AI, Machine Learning &amp; Data Science</div>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cert-name">Fundamentals of Deep Learning</span><span class="cert-issuer-date"><span class="nvidia-badge">NVIDIA</span><br/>Apr 2025</span></div>
+        <div class="cert-item"><span class="cert-name">AI Foundations: Thinking Machines</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Introduction to Artificial Intelligence</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Advanced NoSQL for Data Science</span><span class="cert-issuer-date">LinkedIn<br/>Jan 2025</span></div>
+        <div class="cert-item"><span class="cert-name">Statistics Foundations 1: The Basics</span><span class="cert-issuer-date">LinkedIn<br/>Sep 2024</span></div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">⚡ Embedded Systems, FPGA &amp; Hardware</div>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cert-name">C Programming for Embedded Applications</span><span class="cert-issuer-date">LinkedIn<br/>Nov 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Intro to FreeRTOS &amp; Basic Task Management</span><span class="cert-issuer-date">LinkedIn<br/>Nov 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Getting Started with RISC-V</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Learning Verilog for FPGA Development</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Learning FPGA Development</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Introduction to Quantum Computing</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">🏗 Software Architecture &amp; Engineering</div>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cert-name">Software Architecture: Domain-Driven Design</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Microservices Foundations</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Microservices: Asynchronous Messaging</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Microservices: Security</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">🎤 Leadership &amp; Communication</div>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cert-name">How to Be an Effective Manager to Drive Impact</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Storytelling to Influence Leadership</span><span class="cert-issuer-date">LinkedIn<br/>May 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Improving Your Thinking</span><span class="cert-issuer-date">LinkedIn<br/>Jul 2024</span></div>
+        <div class="cert-item"><span class="cert-name">Leading with Emotional Intelligence</span><span class="cert-issuer-date">LinkedIn<br/>Apr 2019</span></div>
+        <div class="cert-item"><span class="cert-name">Public Speaking Foundations</span><span class="cert-issuer-date">LinkedIn<br/>Feb 2019</span></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleRole(card) {
+    card.classList.toggle('open');
+  }
+
+  function revealContact() {
+    const btn = document.getElementById('revealBtn');
+    const note = document.getElementById('revealNote');
+    const box = document.getElementById('revealedContact');
+    box.classList.add('show');
+    btn.style.display = 'none';
+    note.style.display = 'none';
+  }
+</script>
+</body>
+</html>
