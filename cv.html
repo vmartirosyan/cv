@@ -125,6 +125,18 @@
   .nav-item.active { background: rgba(255,255,255,0.15); color: #fff; font-weight: 600; }
   .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
 
+  .pdf-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin: 0 16px 14px;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    color: #fff; font-size: 12px; font-weight: 600;
+    text-decoration: none; transition: background .2s, border-color .2s;
+  }
+  .pdf-btn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+
   .sidebar-langs {
     padding: 14px 20px;
     border-top: 1px solid rgba(255,255,255,0.12);
@@ -320,7 +332,7 @@
     <a href="https://www.linkedin.com/in/vahrammartirosyan" target="_blank"><span class="icon">🔗</span>LinkedIn Profile</a>
     <a href="https://www.researchgate.net/profile/Vahram-Martirosyan-2" target="_blank"><span class="icon">📄</span>ResearchGate</a>
     <a href="https://github.com/vmartirosyan" target="_blank"><span class="icon">💻</span>GitHub</a>
-    <a href="#"><span class="icon">📍</span>Abu Dhabi, UAE · Golden Visa</a>
+    <a href="#"><span class="icon">📍</span>Abu Dhabi, UAE</a>
   </div>
 
   <nav class="sidebar-nav">
@@ -331,6 +343,10 @@
     <button class="nav-item" onclick="show('publications', this)"><span class="nav-icon">📚</span> Publications</button>
     <button class="nav-item" onclick="show('certifications', this)"><span class="nav-icon">🏅</span> Certifications</button>
   </nav>
+
+  <a class="pdf-btn" href="Dr_Vahram_Martirosyan_CV.pdf" target="_blank" download="Vahram_Martirosyan_CV.pdf">
+    <span>📄</span> Download PDF
+  </a>
 
   <div class="sidebar-langs">
     <h4>Languages</h4>
