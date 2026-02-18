@@ -1,0 +1,313 @@
+\documentclass[a4paper,12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+% Custom Colors
+\definecolor{primary}{RGB}{0, 51, 102}   % Navy Blue
+\definecolor{secondary}{RGB}{70, 70, 70} % Dark Gray
+
+% Hyperlink Setup
+\hypersetup{colorlinks=true, urlcolor=primary, linkcolor=primary}
+
+% Section Formatting
+\titleformat{\section}{\Large\bfseries\color{primary}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Custom command: role + date on same line
+\newcommand{\role}[3]{%
+  \par\vspace{7pt}\noindent\textbf{#1} \hfill \small\textnormal{#2} \\
+  \textit{\small #3}\par\vspace{3pt}%
+}
+
+% Publication / experience group sub-heading
+\newcommand{\pubgroup}[1]{%
+  \vspace{10pt}%
+  \noindent{\normalsize\bfseries\color{primary}#1}\par\vspace{-4pt}%
+  \noindent{\color{primary}\rule{\linewidth}{0.5pt}}\par\vspace{3pt}%
+}
+
+% Document
+\begin{document}
+\pagestyle{empty}
+
+%% ─── HEADER ────────────────────────────────────────────────────────────────
+\begin{center}
+  {\Huge\bfseries Dr. Vahram Martirosyan}\\[4pt]
+  \small
+  +971 50 356 2363 \quad|\quad
+  \href{mailto:vmartirosyan@gmail.com}{vmartirosyan@gmail.com} \\
+  \href{https://www.linkedin.com/in/vahrammartirosyan}{LinkedIn Profile} \quad | \quad
+  \href{https://www.researchgate.net/profile/Vahram-Martirosyan-2}{ResearchGate Profile} \quad | \quad 
+  \href{https://github.com/vmartirosyan}{GitHub Profile} \\
+  Abu Dhabi, UAE (Golden visa holder)\\[3pt]
+  \textit{ Explainable Medical AI $\cdot$ HPC \& Compiler Engineering $\cdot$ Systems Programmer $\cdot$ Academic Leader}
+\end{center}
+
+%% ─── SUMMARY ────────────────────────────────────────────────────────────────
+\section*{Professional Summary}
+\setlength{\parskip}{5pt}
+Ph.D.\ in Computational Mathematics with 20+ years of experience across research, industry, and
+academia. Core expertise spans \textbf{explainable medical AI}, \textbf{high-performance computing},
+\textbf{compiler engineering}, and \textbf{systems programming}, with a consistent focus on making
+complex computational problems both efficient and interpretable.
+
+Active researcher in transparent machine learning for clinical diagnostics and LLVM-based
+automatic parallelisation. Former industry engineer and technical lead, startup CEO, and head of a
+Russian Academy of Sciences laboratory. Currently \textbf{Assistant Professor and Course Team Leader}
+at Higher Colleges of Technology, Abu Dhabi.
+\setlength{\parskip}{0pt}
+
+%% ─── SKILLS ─────────────────────────────────────────────────────────────────
+\section*{Technical Skills}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Explainable / Medical AI:} Polynomial Regression Models (PRMs), feature importance,
+        interpretable classification for clinical data, regression-based diagnostic models, Statistics \& Probability.
+  \item \textbf{Machine Learning:} Supervised learning, regression modelling, interpretable model design.
+  \item \textbf{HPC \& Parallelism:} LLVM/Clang (compiler pass development), OpenCL, MPI, POSIX Threads,
+        auto-vectorisation, heterogeneous CPU-GPU execution, Xilinx ACAP.
+  \item \textbf{Systems Programming:} C/C++ (expert), Linux kernel modules, device drivers (Ext4, XFS, JFS, BtrFS),
+        WIN32 API, GTK+, IoT/embedded systems.
+  \item \textbf{Web \& Databases:} PHP/MySQL, ASP.NET/C\#/MS SQL Server, SQL.
+  \item \textbf{Tooling:} Git, Linux/Unix, LaTeX.
+  \item \textbf{Languages:} Armenian (native), Russian (fluent), English (fluent).
+\end{itemize}
+
+%% ─── EXPERIENCE ──────────────────────────────────────────────────────────────
+\section*{Professional Experience}
+
+\pubgroup{Research \& HPC Engineering}
+
+\role{Chief Executive Officer}{Jun 2022 -- Jul 2023}{System View Armenia, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Developed an LLVM/Clang-based auto-vectoriser for Xilinx ACAP boards as part of the \textit{Visual System Integrator} toolchain.
+\end{itemize}
+
+\role{Head of System Programming Laboratory}{Jan 2009 -- Jul 2013}{Russian-Armenian (Slavonic) University / ISP RAS, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Led the System Programming Lab of the Institute for System Programming of the Russian Academy of Sciences.
+  \item Implemented Linux Foundation verification projects for system libraries (LibStdCXX, XLib, GTK+) and kernel modules (Ext4, XFS, JFS, BtrFS) using the Spruce dynamic-verification system.
+\end{itemize}
+
+\role{Junior Research Scientist}{2003 -- 2005}{Institute of Mathematics, National Academy of Sciences of RA, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Parallelisation of numerical algorithms for integral equations and interpolation using MPI.
+\end{itemize}
+
+\pubgroup{Industry Engineering \& Leadership}
+
+\role{Director of Software Engineering}{Sep 2023 -- Dec 2023}{Plat.AI, Yerevan, Armenia}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Led the software engineering team at Plat.AI's Armenian branch.
+\end{itemize}
+
+\role{Associate Software Development Manager}{Oct 2021 -- Jun 2022}{HelpSystems Armenia, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Led engineering teams on enterprise-level software products following promotion from Principal Engineer.
+\end{itemize}
+
+\role{Principal Software Engineer / Team Lead}{Feb 2017 -- Oct 2021}{HelpSystems Armenia, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Led a team delivering enterprise software; technical ownership across design, implementation, and code review.
+\end{itemize}
+
+\role{Software Architect (Contract)}{2018 -- 2020}{Priotix, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Designed and built a complete smart-home IoT system from the ground up.
+\end{itemize}
+
+\role{Principal Software Developer}{Jan 2016 -- Feb 2017}{Optym, Yerevan}
+
+\role{Senior Software Developer}{Aug 2015 -- Dec 2015}{Optym, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Developed optimisation algorithms for logistics scheduling solutions.
+\end{itemize}
+
+\role{Senior Software Developer}{Aug 2013 -- Jul 2015}{ArdInnoTekh LLC, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Back-end development for an enterprise-level logistics scheduling and optimisation framework.
+\end{itemize}
+
+\role{Software Developer}{Oct 2006 -- Dec 2008}{ISMoTech, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Firmware development for telematic devices; Windows applications in C++/C\#; ASP.NET Web Services in C\#.
+\end{itemize}
+
+\role{Software Developer}{Mar 2005 -- Oct 2006}{Lycos Europe}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Web development using PHP/MySQL technologies.
+\end{itemize}
+
+\role{Software Developer}{Sep 2004 -- Apr 2005}{South Tech Consulting Inc., Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Web application development using ASP.NET/C\#/MS SQL Server.
+\end{itemize}
+
+\role{Software Developer}{Apr 2004 -- Oct 2004}{NATK LLC, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Developed internet shop applications in PHP/MySQL and ASP.NET/C\#/MS SQL Server.
+\end{itemize}
+
+\pubgroup{Teaching \& Academia}
+
+\role{Course Team Leader}{Jan 2025 -- Present}{Higher Colleges of Technology, Abu Dhabi, UAE}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Managing and guiding a team of lecturers across multiple campuses for the System Architecture \& Integration course.
+  \item Preparing and maintaining course materials and assessment strategies; ensuring standardised delivery across campuses.
+\end{itemize}
+
+\role{Assistant Professor, Computer Information Science}{Jan 2024 -- Present}{Higher Colleges of Technology, Abu Dhabi, UAE}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Full-time faculty member teaching: Fundamentals of Programming (Java), System Architecture, IoT \& Security, Data Structures \& Algorithms, Statistics and Probability.
+\end{itemize}
+
+\role{Informatics Teacher (Contract)}{Sep 2023 -- Dec 2023}{PhysMath School After A.~Shahinyan, Yerevan, Armenia}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Taught Informatics course at a specialist physics-mathematics secondary school.
+\end{itemize}
+
+\role{Faculty Lecturer (Contract)}{Jan 2023 -- Dec 2023}{Université française en Arménie (UFAR), Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Courses: Computer Architecture I, C Programming.
+\end{itemize}
+
+\role{Visiting Lecturer (Contract)}{Aug 2022 -- Jan 2023}{American University of Armenia, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Taught Introduction to Computer Science course.
+\end{itemize}
+
+\role{Senior Lecturer (Contract)}{Feb 2021 -- Dec 2023}{Yerevan State University, Faculty of Informatics \& Applied Mathematics}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Taught Operating Systems; supervised research in system programming and applied mathematics.
+\end{itemize}
+
+\role{Founder \& Lecturer (Part-time)}{Jan 2019 -- Jun 2023}{MutEx School, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Founded and ran a programming school; delivered courses and public lectures.
+\end{itemize}
+
+\role{Lecturer}{Sep 2013 -- Dec 2019}{Armsoft, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Taught Operating Systems at Armsoft's Computer Science Learning Center.
+\end{itemize}
+
+\role{Lecturer}{Feb 2015 -- Jun 2015}{Armenian Code Academy, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Taught .NET / C\# programming course.
+\end{itemize}
+
+\role{Senior Lecturer}{Feb 2007 -- 2014}{Russian-Armenian (Slavonic) University, Yerevan}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+  \item Courses: Linux/POSIX Programming, Win32 API, Linux Device Driver Development, GUI (GTK+), Operating Systems, System Programming, DBMS.
+\end{itemize}
+
+%% ─── EDUCATION ───────────────────────────────────────────────────────────────
+\section*{Education}
+
+\role{Ph.D., Computational Mathematics}{2006 -- 2009}{Yerevan State University}
+\textit{Dissertation:} ``Construction of an Algorithm for the Pseudoinversion of Bidiagonal Matrices and an Investigation of its Parallelization''\\[4pt]
+\role{M.Sc., Informatics and Applied Mathematics}{2004 -- 2006}{Yerevan State University}
+\role{B.Sc., Informatics and Applied Mathematics}{2000 -- 2004}{Yerevan State University}
+
+%% ─── CERTIFICATIONS ──────────────────────────────────────────────────────────
+\section*{Certifications}
+
+\pubgroup{AI, Machine Learning \& Data Science}
+\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
+  \item Fundamentals of Deep Learning \hfill \textit{NVIDIA}, Apr 2025
+  \item Artificial Intelligence Foundations: Thinking Machines \hfill \textit{LinkedIn}, Jul 2024
+  \item Introduction to Artificial Intelligence \hfill \textit{LinkedIn}, Jul 2024
+  \item Advanced NoSQL for Data Science \hfill \textit{LinkedIn}, Jan 2025
+  \item Statistics Foundations 1: The Basics \hfill \textit{LinkedIn}, Sep 2024
+\end{itemize}
+
+\pubgroup{Embedded Systems, FPGA \& Hardware}
+\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
+  \item C Programming for Embedded Applications \hfill \textit{LinkedIn}, Nov 2024
+  \item Introduction to FreeRTOS and Basic Task Management \hfill \textit{LinkedIn}, Nov 2024
+  \item Getting Started with RISC-V \hfill \textit{LinkedIn}, Jul 2024
+  \item Learning Verilog for FPGA Development \hfill \textit{LinkedIn}, Jul 2024
+  \item Learning FPGA Development \hfill \textit{LinkedIn}, Jul 2024
+  \item Introduction to Quantum Computing \hfill \textit{LinkedIn}, Jul 2024
+\end{itemize}
+
+\pubgroup{Software Architecture \& Engineering}
+\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
+  \item Software Architecture: Domain-Driven Design \hfill \textit{LinkedIn}, Jul 2024
+  \item Microservices Foundations \hfill \textit{LinkedIn}, Jul 2024
+  \item Microservices: Asynchronous Messaging \hfill \textit{LinkedIn}, Jul 2024
+  \item Microservices: Security \hfill \textit{LinkedIn}, Jul 2024
+\end{itemize}
+
+\pubgroup{Leadership \& Communication}
+\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
+  \item How to Be an Effective Manager to Drive Impact \hfill \textit{LinkedIn}, Jul 2024
+  \item Storytelling to Influence Leadership and Decision Makers \hfill \textit{LinkedIn}, May 2024
+  \item Improving Your Thinking \hfill \textit{LinkedIn}, Jul 2024
+  \item Leading with Emotional Intelligence \hfill \textit{LinkedIn}, Apr 2019
+  \item Public Speaking Foundations \hfill \textit{LinkedIn}, Feb 2019
+\end{itemize}
+
+%% ─── PUBLICATIONS ────────────────────────────────────────────────────────────
+\section*{Publications}
+
+\pubgroup{Preprints \& Research Papers}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Martirosyan, V.} ``Stagewise Regularized Polynomial Regression: A Hybrid Optimization Strategy
+        for Medical Diagnosis on Small Datasets.'' Feb 2026.\\
+        {\small(86.7\% accuracy on UCI Cleveland Heart Disease; 93\% model compression; $\approx$36 FLOPs/prediction.)}
+  \item \textbf{Martirosyan, V.} ``Polynomial Regression Models for Interpretable Machine Learning: Theory,
+        Optimization, and Medical Applications.'' Feb 2026.
+  \item \textbf{Martirosyan, V.} ``Heart Disease Diagnosis Using Third-Order Polynomial Regression Models with
+        L2 Regularization.'' Feb 2026.\\
+        {\small(81.8\% accuracy, 10-fold CV; full interpretability via explicit polynomial coefficients.)}
+  \item \textbf{Martirosyan, V.} ``Explainable and Efficient Digit Classification via Polynomial Regression
+        Networks: A Transparent Alternative to Deep Learning.'' Jan 2026.
+  \item \textbf{Martirosyan, V.} ``HPC++: An LLVM-Based Automatic Parallelization Framework with Heterogeneous
+        CPU-GPU Execution.'' Feb 2026.\\
+        {\small(Peak speedup 2009$\times$ on GPU; 32.1$\times$ on CPU.)}
+\end{itemize}
+
+\pubgroup{Conference Papers}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Martirosyan, V.} et al. ``Testing of Linux File System Drivers.''
+        \textit{Proceedings of ISP RAS}, vol.~23, Moscow, Dec 2012.
+  \item \textbf{Martirosyan, V.} et al. ``The Spruce System: Quality Verification of Linux File System Drivers.''
+        \textit{SYRCoSE 2012}, May 2012.
+  \item \textbf{Martirosyan, V.} et al. ``Dynamic Verification of Linux File System Drivers.''
+        \textit{CSIT 2011}, Sep 2011.
+  \item \textbf{Martirosyan, V.} et al. ``The Spruce System: Linux Kernel Module Verification Automation''
+        (in Russian). \textit{7th Annual Conference of RAU}, Dec 2012.
+  \item \textbf{Martirosyan, V.} et al. ``Fault Simulation in Linux Kernel Module Verification''
+        (in Russian). \textit{7th Annual Conference of RAU}, Dec 2012.
+  \item \textbf{Martirosyan, V.} et al. ``Linux Verification -- Challenge of Today.''
+        \textit{7th Annual Conference of RAU}, Dec 2012.
+  \item \textbf{Martirosyan, V.} et al. ``X2C -- XML To Code: Advantages of Standards.''
+        \textit{4th Scientific Annual Conference of RAU}, Dec 2009.
+  \item \textbf{Martirosyan, V.} et al. ``X2C: Code Generation Technology.''
+\end{itemize}
+
+\pubgroup{Books \& Tutorials}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Martirosyan, V.} \textit{Programming via Operating Systems, Second Edition.}
+        Hilfmann Press, Sep 2024.
+  \item \textbf{Martirosyan, V.} et al. \textit{Tutorial: Basics of Programming in OS Linux Environment}
+        (in Russian). MIPT, Apr 2011.
+  \item \textbf{Martirosyan, V.} et al. \textit{Tutorial: Programming in GNU/Linux Environment -- From System
+        Calls to the GUI} (in Russian). RAU Publishing, Dec 2010.
+\end{itemize}
+
+\pubgroup{Translations}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textit{Jinnetic Engineering} by Richard Stallman, translated into Armenian. Dec 2010.
+\end{itemize}
+
+\end{document}
