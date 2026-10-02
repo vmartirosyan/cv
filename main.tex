@@ -60,12 +60,14 @@ and the UAE, combined with 20+ years of professional software engineering and ac
 I believe rigorous computer-science education must connect theory to practice: my courses consistently
 move students from first principles to hands-on implementation using real systems.
 
-Current areas of instruction span \textbf{programming (Java, C)}, \textbf{system architecture},
+Current areas of instruction span \textbf{programming (C, C++, Python)}, \textbf{system architecture},
 \textbf{data structures \& algorithms}, \textbf{operating systems}, \textbf{IoT \& security},
-and \textbf{statistics}. Active researcher in \textbf{explainable AI} applied to medicine, materials
-science, and precision agriculture via Polynomial Regression Models, and in LLVM-based automatic
-parallelisation (HPC++). 21 publications (18 public + 3 submitted to IEEE) and a track record
-of integrating research directly into the classroom.
+and \textbf{statistics}. Active researcher in intrinsically \textbf{explainable AI} via polynomial
+regression models, applied to medicine (ECG and clinical diagnosis), materials science, precision
+agriculture, and ocean/climate science, and in \textbf{HPC \& compiler engineering}: LLVM-based
+automatic parallelisation (HPC++) and binary lifting of legacy code (LEAP). 25+ publications,
+including a published IEEE-indexed conference paper, several manuscripts under review, and a
+pending patent, with a track record of integrating research directly into the classroom.
 Currently \textbf{Chief Scientist} at \href{https://www.explainableai.app}{ExplainableAI.app} and
 \textbf{Assistant Professor and Course Team Leader} (multi-campus) at Higher Colleges of Technology, Abu Dhabi.
 \setlength{\parskip}{0pt}
@@ -81,7 +83,7 @@ Currently \textbf{Chief Scientist} at \href{https://www.explainableai.app}{Expla
 %% ─── COURSES TAUGHT ──────────────────────────────────────────────────────────
 \section*{Courses Taught}
 \begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
-  \item \textbf{Programming:} Fundamentals of Programming (Java), C Programming, .NET/C\# Programming, Intro to Computer Science.
+  \item \textbf{Programming:} Fundamentals of Programming, C Programming, C++ Programming, High-performance computing in C++, .NET/C\# Programming, Intro to Computer Science.
   \item \textbf{Systems \& Architecture:} System Architecture \& Integration, Computer Architecture I, Operating Systems,
         Linux/POSIX Programming, Win32 API Programming, Linux Device Driver Development.
   \item \textbf{Data \& Mathematics:} Data Structures \& Algorithms, Discrete Mathematics, Applied Discrete Mathematics,
@@ -163,31 +165,81 @@ Currently \textbf{Chief Scientist} at \href{https://www.explainableai.app}{Expla
 %% ─── PUBLICATIONS ────────────────────────────────────────────────────────────
 \section*{Publications}
 
-\pubgroup{Preprints \& Research Papers}
+\pubgroup{Published}
 \begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
-  \item \textbf{Martirosyan, V.} ``Stagewise Regularized Polynomial Regression: A Hybrid Optimization Strategy
-        for Medical Diagnosis on Small Datasets.'' Feb 2026.\\
-        {\small(86.7\% accuracy on UCI Cleveland Heart Disease; 93\% model compression; $\approx$36 FLOPs/prediction.)}
-  \item \textbf{Martirosyan, V.} ``Polynomial Regression Models for Interpretable Machine Learning: Theory,
-        Optimization, and Medical Applications.'' Feb 2026.
-  \item \textbf{Martirosyan, V.} ``Heart Disease Diagnosis Using Third-Order Polynomial Regression Models with
-        L2 Regularization.'' Feb 2026.\\
-        {\small(81.8\% accuracy, 10-fold CV; full interpretability via explicit polynomial coefficients.)}
-  \item \textbf{Martirosyan, V.} ``Explainable and Efficient Digit Classification via Polynomial Regression
-        Networks: A Transparent Alternative to Deep Learning.'' Jan 2026.
-  \item \textbf{Martirosyan, V.} ``HPC++: An LLVM-Based Automatic Parallelization Framework with Heterogeneous
-        CPU-GPU Execution.'' Feb 2026.\\
-        {\small(Peak speedup 2009$\times$ on GPU; 32.1$\times$ on CPU.)}
-  \item \textbf{Martirosyan, V.} ``Exploring Second-Order Polynomial Regression for Image-Based ECG
-        Arrhythmia Detection.'' Feb 2026.
-  \item \textbf{Martirosyan, V.} ``Six-Class ECG Arrhythmia Classification using a Heterogeneous
-        One-vs-Rest Polynomial Ensemble.'' Feb 2026.
-  \item \textbf{Martirosyan, V.} ``Polynomial Regression Model for Concrete Compressive Strength
-        Prediction.'' \textit{Submitted to IEEE}, 2026.
-  \item \textbf{Martirosyan, V.} ``Crop Type Detection via Polynomial Regression Networks.''
-        \textit{Submitted to IEEE}, 2026.
-  \item \textbf{Martirosyan, V.} ``Interpretable Yield Strength Prediction for High-Entropy Alloys
-        Using Polynomial Regression Models.'' \textit{Patent pending; paper in preparation}, 2026.
+  \item \textbf{Martirosyan, V.} ``Accuracy and Interpretability from a Single Solver: Polynomial
+        Regression up to Degree 5 for Concrete Compressive Strength Prediction.''
+        \textit{ICACTE 2026} (IEEE-indexed conference), 2026.\\
+        {\small(Degree-5 $R^2 = 0.859$, RMSE 6.25\,MPa; 88\% term reduction with 74\% of the retained
+        terms aligning with known concrete physics; single closed-form solve, no gradient descent.)}
+\end{itemize}
+
+\pubgroup{Under Review / Submitted}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Martirosyan, V.} ``LEAP: Lifting Legacy x86-64 Binaries to Recompilable IR for
+        Automatic Parallelization.'' \textit{Submitted to Frontiers of Computer Science}, 2026.\\
+        {\small(43-program liftability study: 100\% at \texttt{-O0} and 98\% at \texttt{-O1/O2/O3};
+        3.7$\times$ geomean speedup from source IR; uplifted binary 10.3$\times$ over \texttt{-O0}
+        and 2.1$\times$ over \texttt{-O2}; 246$\times$ peak GPU offload; 377/377 tests pass.)}
+  \item \textbf{Martirosyan, V.} ``On-Device TinyML for Multi-Variable Ocean Profiling''
+        (eICocean). \textit{Submitted to eICocean 2027}, 2026.\\
+        {\small($R^2 = 0.973$ temperature, 0.794 salinity, 0.895 dissolved oxygen; 4.4\,\textmu s
+        desktop inference; 1.09\,ms on ESP32 and 1.49\,ms on RP2350; 180\,\textmu J/96\,\textmu J
+        per inference.)}
+  \item \textbf{Martirosyan, V.} ``Interpretable Polynomial Zone Ensembles for Global Ocean
+        Temperature and Salinity Profile Reconstruction.'' \textit{Under review} (Q1 journal), 2026.\\
+        {\small(WOA 2018, 534{,}090 samples; pooled $R^2 = 0.9703$ temperature / $0.8376$ salinity;
+        sub-millisecond inference, sub-megabyte footprint.)}
+  \item \textbf{Martirosyan, V.} ``Depth-Zone Polynomial Regression for Global Ocean
+        Climatology.'' \textit{Under review} (IEEE journal), 2026.
+  \item \textbf{Martirosyan, V.} ``Efficient Multi-Class ECG Classification Using Polynomial
+        Regression with an Analytical Solver.'' \textit{Applied Computational Intelligence and
+        Soft Computing} (major revision), 2026.\\
+        {\small(82.75\% $\pm$ 1.03\% six-class accuracy, macro-F1 0.758; 12\,\textmu s inference;
+        outperforms CNN, random forest, XGBoost and SVM baselines.)}
+  \item \textbf{Martirosyan, V.} ``Automated Multi-Class ECG Arrhythmia Classification Using an
+        Ensemble of Polynomial Regression Models.'' \textit{IEEE ICCA 2026} (submitted), 2026.\\
+        {\small(78.32\% balanced accuracy, 68.23\% macro-F1; sparsification reduces 123.1M terms to
+        330K --- 1.3\,MB, a 99.7\% reduction --- within $\approx$1\,pp.)}
+  \item \textbf{Martirosyan, V.} ``Sparse Polynomial Regression for Interpretable Yield-Strength
+        Prediction in High-Entropy Alloys.'' \textit{Under review} (IEEE ITT 2026), 2026.\\
+        {\small(Degree-3 $R^2 = 0.738$ on $n=1{,}014$, statistically tied with random forest and
+        XGBoost and significantly above a neural network (0.618); 8 of 11 retained terms map to
+        known hardening mechanisms; BCC-only $R^2 = 0.841$.)}
+  \item \textbf{Martirosyan, V.} ``Efficient Crop Type Mapping via Degree-2 Polynomial Feature
+        Expansion of Multi-Temporal Optical and SAR Data.'' \textit{Submitted to IEEE TGRS}, 2026.\\
+        {\small(98.67\% test accuracy and macro-F1; 2.3\,s training on 16 cores; 17$\times$ SIMD
+        speedup.)}
+\end{itemize}
+
+\pubgroup{Preprints \& Prepared Manuscripts}
+\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
+  \item \textbf{Martirosyan, V.} ``hpc++: An LLVM-Based Automatic Parallelization System for C++
+        with GPU Acceleration.'' arXiv preprint, Dec 2025.\\
+        {\small(7 parallelisation strategies, zero source modification, 24 benchmarks; 16.8$\times$
+        average, 97$\times$ peak CPU, 247$\times$ peak GPU; 100\% numerical correctness.)}
+  \item \textbf{Martirosyan, V.} ``Auditable Kilobyte-Scale Surrogates for the Global
+        Significant-Wave-Height Climatology.'' \textit{Prepared for IEEE JSTARS}, 2026.\\
+        {\small($R^2 = 0.945$, RMSE 0.262\,m; cell-holdout $R^2 = 0.933$; coastal $R^2$ improves
+        from 0.34 to 0.52 with in-situ buoys.)}
+  \item \textbf{Martirosyan, V.} ``Interpretable Polynomial Zone Ensembles for Global Ocean
+        Temperature and Salinity Profile Reconstruction.'' \textit{Prepared for IEEE JSTARS}, 2026.
+  \item \textbf{Martirosyan, V.} ``Polynomial Regression Models for Interpretable Machine
+        Learning: Theory, Optimization, and Medical Applications.'' Feb 2026.
+  \item \textbf{Martirosyan, V.} ``Stagewise Regularized Polynomial Regression: A Hybrid
+        Optimization Strategy for Medical Diagnosis on Small Datasets.'' Feb 2026.\\
+        {\small(86.7\% accuracy on UCI Cleveland Heart Disease; 93\% model compression;
+        $\approx$36 FLOPs/prediction.)}
+  \item \textbf{Martirosyan, V.} ``Heart Disease Diagnosis Using Third-Order Polynomial
+        Regression Models with L2 Regularization.'' Feb 2026.\\
+        {\small(81.8\% accuracy, 10-fold CV; full interpretability via explicit polynomial
+        coefficients.)}
+  \item \textbf{Martirosyan, V.} ``Explainable and Efficient Digit Classification via Polynomial
+        Regression Networks: A Transparent Alternative to Deep Learning.'' arXiv preprint, Jan
+        2026.\\
+        {\small(96.85\% average MNIST accuracy; 84\% parameter reduction at $<$1\% accuracy loss.)}
+  \item \textbf{Martirosyan, V.} ``Blended Ocean Visualization: Combining Sparse Polynomial
+        Regression with Residual Fields.'' Working paper, 2026.
 \end{itemize}
 
 \pubgroup{Conference Papers}
@@ -264,212 +316,6 @@ Currently \textbf{Chief Scientist} at \href{https://www.explainableai.app}{Expla
 
 %% ─── CERTIFICATIONS ──────────────────────────────────────────────────────────
 \section*{Professional Development \& Certifications}
-
-\pubgroup{AI, Machine Learning \& Data Science}
-\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
-  \item Fundamentals of Deep Learning \hfill \textit{NVIDIA}, Apr 2025
-  \item Artificial Intelligence Foundations: Thinking Machines \hfill \textit{LinkedIn}, Jul 2024
-  \item Introduction to Artificial Intelligence \hfill \textit{LinkedIn}, Jul 2024
-  \item Advanced NoSQL for Data Science \hfill \textit{LinkedIn}, Jan 2025
-  \item Statistics Foundations 1: The Basics \hfill \textit{LinkedIn}, Sep 2024
-\end{itemize}
-
-\pubgroup{Embedded Systems, FPGA \& Hardware}
-\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
-  \item C Programming for Embedded Applications \hfill \textit{LinkedIn}, Nov 2024
-  \item Introduction to FreeRTOS and Basic Task Management \hfill \textit{LinkedIn}, Nov 2024
-  \item Getting Started with RISC-V \hfill \textit{LinkedIn}, Jul 2024
-  \item Learning Verilog for FPGA Development \hfill \textit{LinkedIn}, Jul 2024
-  \item Learning FPGA Development \hfill \textit{LinkedIn}, Jul 2024
-  \item Introduction to Quantum Computing \hfill \textit{LinkedIn}, Jul 2024
-\end{itemize}
-
-\pubgroup{Software Architecture \& Engineering}
-\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
-  \item Software Architecture: Domain-Driven Design \hfill \textit{LinkedIn}, Jul 2024
-  \item Microservices Foundations \hfill \textit{LinkedIn}, Jul 2024
-  \item Microservices: Asynchronous Messaging \hfill \textit{LinkedIn}, Jul 2024
-  \item Microservices: Security \hfill \textit{LinkedIn}, Jul 2024
-\end{itemize}
-
-\pubgroup{Leadership \& Communication}
-\begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
-  \item How to Be an Effective Manager to Drive Impact \hfill \textit{LinkedIn}, Jul 2024
-  \item Storytelling to Influence Leadership and Decision Makers \hfill \textit{LinkedIn}, May 2024
-  \item Improving Your Thinking \hfill \textit{LinkedIn}, Jul 2024
-  \item Leading with Emotional Intelligence \hfill \textit{LinkedIn}, Apr 2019
-  \item Public Speaking Foundations \hfill \textit{LinkedIn}, Feb 2019
-\end{itemize}
-
-\end{document}
-
-%% ─── SUMMARY ────────────────────────────────────────────────────────────────
-\section*{Professional Summary}
-\setlength{\parskip}{5pt}
-Ph.D.\ in Computational Mathematics with 20+ years of experience across research, industry, and
-academia. Core expertise spans \textbf{explainable medical AI}, \textbf{high-performance computing},
-\textbf{compiler engineering}, and \textbf{systems programming}, with a consistent focus on making
-complex computational problems both efficient and interpretable.
-
-Active researcher in transparent machine learning for clinical diagnostics and LLVM-based
-automatic parallelisation. Former industry engineer and technical lead, startup CEO, and head of a
-Russian Academy of Sciences laboratory. Currently \textbf{Assistant Professor and Course Team Leader}
-at Higher Colleges of Technology, Abu Dhabi.
-\setlength{\parskip}{0pt}
-
-%% ─── SKILLS ─────────────────────────────────────────────────────────────────
-\section*{Technical Skills}
-\begin{itemize}[leftmargin=*, itemsep=4pt, topsep=3pt]
-  \item \textbf{Explainable / Medical AI:} Polynomial Regression Models (PRMs), feature importance,
-        interpretable classification for clinical data, regression-based diagnostic models, Statistics \& Probability.
-  \item \textbf{Machine Learning:} Supervised learning, regression modelling, interpretable model design, Python, PyTorch.
-  \item \textbf{HPC \& Parallelism:} LLVM/Clang (compiler pass development), OpenCL, MPI, POSIX Threads,
-        auto-vectorisation, heterogeneous CPU-GPU execution, Xilinx ACAP.
-  \item \textbf{Systems Programming:} C/C++ (expert), Linux kernel modules, device drivers (Ext4, XFS, JFS, BtrFS),
-        WIN32 API, GTK+, IoT/embedded systems.
-  \item \textbf{Web \& Databases:} PHP/MySQL, ASP.NET/C\#/MS SQL Server, SQL.
-  \item \textbf{Tooling:} Git, Linux/Unix, LaTeX.
-  \item \textbf{Languages:} Armenian (native), Russian (fluent), English (fluent).
-\end{itemize}
-
-%% ─── EXPERIENCE ──────────────────────────────────────────────────────────────
-\section*{Professional Experience}
-
-\pubgroup{Research \& HPC Engineering}
-
-\role{Chief Executive Officer}{Jun 2022 -- Jul 2023}{System View Armenia, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Developed an LLVM/Clang-based auto-vectoriser for Xilinx ACAP boards as part of the \textit{Visual System Integrator} toolchain.
-\end{itemize}
-
-\role{Head of System Programming Laboratory}{Jan 2009 -- Jul 2013}{Russian-Armenian (Slavonic) University / ISP RAS, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Led the System Programming Lab of the Institute for System Programming of the Russian Academy of Sciences.
-  \item Implemented Linux Foundation verification projects for system libraries (LibStdCXX, XLib, GTK+) and kernel modules (Ext4, XFS, JFS, BtrFS) using the Spruce dynamic-verification system.
-\end{itemize}
-
-\role{Junior Research Scientist}{2003 -- 2005}{Institute of Mathematics, National Academy of Sciences of RA, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Parallelisation of numerical algorithms for integral equations and interpolation using MPI.
-\end{itemize}
-
-\pubgroup{Industry Engineering \& Leadership}
-
-\role{Director of Software Engineering}{Sep 2023 -- Dec 2023}{Plat.AI, Yerevan, Armenia}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Led the software engineering team at Plat.AI's Armenian branch.
-\end{itemize}
-
-\role{Associate Software Development Manager}{Oct 2021 -- Jun 2022}{HelpSystems Armenia, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Led engineering teams on enterprise-level software products following promotion from Principal Engineer.
-\end{itemize}
-
-\role{Principal Software Engineer / Team Lead}{Feb 2017 -- Oct 2021}{HelpSystems Armenia, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Led a team delivering enterprise software; technical ownership across design, implementation, and code review.
-\end{itemize}
-
-\role{Software Architect (Contract)}{2018 -- 2020}{Priotix, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Designed and built a complete smart-home IoT system from the ground up.
-\end{itemize}
-
-\role{Principal Software Developer}{Jan 2016 -- Feb 2017}{Optym, Yerevan}
-
-\role{Senior Software Developer}{Aug 2015 -- Dec 2015}{Optym, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Developed optimisation algorithms for logistics scheduling solutions.
-\end{itemize}
-
-\role{Senior Software Developer}{Aug 2013 -- Jul 2015}{ArdInnoTekh LLC, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Back-end development for an enterprise-level logistics scheduling and optimisation framework.
-\end{itemize}
-
-\role{Software Developer}{Oct 2006 -- Dec 2008}{ISMoTech, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Firmware development for telematic devices; Windows applications in C++/C\#; ASP.NET Web Services in C\#.
-\end{itemize}
-
-\role{Software Developer}{Mar 2005 -- Oct 2006}{Lycos Europe}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Web development using PHP/MySQL technologies.
-\end{itemize}
-
-\role{Software Developer}{Sep 2004 -- Apr 2005}{South Tech Consulting Inc., Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Web application development using ASP.NET/C\#/MS SQL Server.
-\end{itemize}
-
-\role{Software Developer}{Apr 2004 -- Oct 2004}{NATK LLC, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Developed internet shop applications in PHP/MySQL and ASP.NET/C\#/MS SQL Server.
-\end{itemize}
-
-\pubgroup{Teaching \& Academia}
-
-\role{Course Team Leader}{Jan 2025 -- Present}{Higher Colleges of Technology, Abu Dhabi, UAE}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Managing and guiding a team of lecturers across multiple campuses for the System Architecture \& Integration course.
-  \item Preparing and maintaining course materials and assessment strategies; ensuring standardised delivery across campuses.
-\end{itemize}
-
-\role{Assistant Professor, Computer Information Science}{Jan 2024 -- Present}{Higher Colleges of Technology, Abu Dhabi, UAE}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Full-time faculty member teaching: Fundamentals of Programming (Java), System Architecture, IoT \& Security, Data Structures \& Algorithms, Applied Discrete Mathematics, Computational Thinking, Statistics and Probability.
-\end{itemize}
-
-\role{Informatics Teacher (Contract)}{Sep 2023 -- Dec 2023}{PhysMath School After A.~Shahinyan, Yerevan, Armenia}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Taught Informatics course at a specialist physics-mathematics secondary school.
-\end{itemize}
-
-\role{Faculty Lecturer (Contract)}{Jan 2023 -- Dec 2023}{Université française en Arménie (UFAR), Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Courses: Computer Architecture I, C Programming.
-\end{itemize}
-
-\role{Visiting Lecturer (Contract)}{Aug 2022 -- Jan 2023}{American University of Armenia, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Taught Introduction to Computer Science course.
-\end{itemize}
-
-\role{Senior Lecturer (Contract)}{Feb 2021 -- Dec 2023}{Yerevan State University, Faculty of Informatics \& Applied Mathematics}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Taught Operating Systems; supervised research in system programming and applied mathematics.
-\end{itemize}
-
-\role{Founder \& Lecturer (Part-time)}{Jan 2019 -- Jun 2023}{MutEx School, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Founded and ran a programming school; delivered courses and public lectures.
-\end{itemize}
-
-\role{Lecturer}{Sep 2013 -- Dec 2019}{Armsoft, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Taught Operating Systems at Armsoft's Computer Science Learning Center.
-\end{itemize}
-
-\role{Lecturer}{Feb 2015 -- Jun 2015}{Armenian Code Academy, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Taught .NET / C\# programming course.
-\end{itemize}
-
-\role{Senior Lecturer}{Feb 2007 -- 2014}{Russian-Armenian (Slavonic) University, Yerevan}
-\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
-  \item Courses: Linux/POSIX Programming, Win32 API, Linux Device Driver Development, GUI (GTK+), Operating Systems, System Programming, DBMS.
-\end{itemize}
-
-%% ─── EDUCATION ───────────────────────────────────────────────────────────────
-\section*{Education}
-
-\role{Ph.D., Computational Mathematics}{2006 -- 2009}{Yerevan State University}
-\textit{Dissertation:} ``Construction of an Algorithm for the Pseudoinversion of Bidiagonal Matrices and an Investigation of its Parallelization''\\[4pt]
-\role{M.Sc., Informatics and Applied Mathematics}{2004 -- 2006}{Yerevan State University}
-\role{B.Sc., Informatics and Applied Mathematics}{2000 -- 2004}{Yerevan State University}
-
-%% ─── CERTIFICATIONS ──────────────────────────────────────────────────────────
-\section*{Certifications}
 
 \pubgroup{AI, Machine Learning \& Data Science}
 \begin{itemize}[leftmargin=*, itemsep=3pt, topsep=3pt]
